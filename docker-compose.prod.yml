@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smart-movie-recommender-backend-prod
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./data/movies.db
+      - MODEL_PATH=/app/models/
+      - LOG_LEVEL=INFO
+      - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:3000}
+    volumes:
+      - ./training/models:/app/models:ro
+      - backend_db_prod:/app/data
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    container_name: smart-movie-recommender-frontend-prod
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=${API_URL:-http://localhost:8000}
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - app-network
+
+volumes:
+  backend_db_prod:
+
+networks:
+  app-network:
+    driver: bridge
+
