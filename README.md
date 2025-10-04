@@ -155,11 +155,13 @@ flowchart LR
 - **Pydantic**: Data validation
 
 ### Frontend
-- **React 18**: UI framework
+- **React**: UI library
 - **TypeScript**: Type safety
 - **Tailwind CSS**: Styling
+- **Shadcn UI**: Component library
 - **React Query**: Data fetching
 - **Recharts**: Visualizations
+- **Vite**: Build tool
 
 ### ML Pipeline
 - **Training**: Offline Python scripts
