@@ -80,6 +80,34 @@ open http://localhost:3000
 
 **That's it!** 🎉 You now have a working movie recommender.
 
+### Production Deployment
+
+For production deployment, use the production Docker Compose configuration:
+
+```bash
+# Build and start production services
+docker-compose -f docker-compose.prod.yml up -d
+
+# Or use the setup script
+./setup.sh
+```
+
+**Production Features:**
+- Optimized builds with multi-stage Dockerfiles
+- Nginx for frontend static file serving
+- Read-only model volumes
+- Automatic restarts on failure
+- Environment variable configuration
+
+**Environment Variables for Production:**
+```bash
+# .env.prod
+DATABASE_URL=sqlite:///./data/movies.db
+MODEL_PATH=/app/models/
+CORS_ORIGINS=https://yourdomain.com
+API_URL=https://api.yourdomain.com
+```
+
 ## 🎬 How It Works
 
 ### The Algorithm
