@@ -9,9 +9,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![Demo](docs/images/demo.png)
-
-## 🎯 What I learned with this project as a beginner AI engineer:
+## 🎯 What I learned with this project:
 
 - ✅ **Classical ML**: Content-based filtering with TF-IDF and cosine similarity
 - ✅ **ML Pipeline**: Separate training and serving architecture
